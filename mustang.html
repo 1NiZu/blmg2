@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2018 Ford Mustang Shelby GT350R - Anúncio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+    .navbar {
+      background-color: #3547a8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #2a2a2a;
+    }
+    .logo img {
+      width: 175px;
+      vertical-align: middle;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 20px;
+    }
+    .navbar-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: background 0.3s, color 0.3s;
+    }
+    .navbar-links a:hover {
+      background-color: #333;
+      color: #fff;
+    }
+    .navbar-links .active-link {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .page-container {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 40px;
+    }
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .image-column {
+      flex: 1 1 65%;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .main-image-wrapper {
+      flex: 1;
+      min-width: 0;
+    }
+    .main-image {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+    .thumbnail-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .thumbnail-gallery img {
+      width: 160px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s, opacity 0.3s;
+      border: 2px solid transparent;
+    }
+    .thumbnail-gallery img:hover,
+    .thumbnail-gallery img.active-thumb {
+      transform: scale(1.05);
+      opacity: 1;
+      border-color: #007bff;
+    }
+    .details-column {
+      flex: 1 1 30%;
+      min-width: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    .specs-table {
+      background-color: #1f1f1f;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #333;
+    }
+    .spec-item:last-child {
+      border-bottom: none;
+    }
+    .spec-label {
+      color: #aaa;
+      font-size: 15px;
+      margin-right: 10px;
+    }
+    .spec-value {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: right;
+    }
+    .seller-contact {
+      background-color: #1f1f1f;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    .seller-info .seller-label {
+      color: #b0b0b0;
+      font-size: 14px;
+      display: block;
+    }
+    .seller-info strong {
+      font-size: 18px;
+      color: #fff;
+      display: block;
+      margin-top: 4px;
+    }
+    .contact-button-seller {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-button-seller:hover {
+      background-color: #218838;
+    }
+    .car-info-bottom {
+      margin-top: 20px;
+      color: #e0e0e0;
+      background-color: #1f1f1f;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+    .car-title {
+      font-size: 38px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .car-meta {
+      font-size: 18px;
+      color: #bbb;
+      margin: 8px 0 20px 0;
+    }
+    .description {
+      max-width: 900px;
+      line-height: 1.7;
+      font-size: 16px;
+      color: #ccc;
+    }
+    .auction-section {
+      background-color: #252525;
+      padding: 25px 30px;
+      border-radius: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .auction-end-time {
+      font-size: 18px;
+      color: #e0e0e0;
+      background-color: #3a3a3a;
+      padding: 20px 25px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .current-bid-area {
+      text-align: center;
+      flex-grow: 1;
+    }
+    .current-bid-area span {
+      font-size: 18px;
+      color: #e0e0e0;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .current-bid-area strong {
+      font-size: 36px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .bid-action-area {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .bid-input {
+      padding: 18px 22px;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background-color: #f0f0f0;
+      color: #1c1c1c;
+      width: 220px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .bid-input::placeholder {
+      color: #6b7280;
+    }
+    .bid-button {
+      background-color: #007bff;
+      color: white;
+      padding: 20px 35px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .bid-button:hover {
+      background-color: #0056b3;
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-overlay.modal-active {
+      display: flex;
+    }
+    .modal-content {
+      background-color: #1f1f1f;
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      border: 1px solid #333;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+      font-size: 24px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    .modal-content p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #ccc;
+    }
+    .modal-content p strong {
+      color: #fff;
+      margin-right: 8px;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-modal:hover {
+      color: #fff;
+    }
+    @media (max-width: 1200px) {
+      .auction-section {
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+      }
+      .current-bid-area {
+        margin: 20px 0;
+      }
+    }
+    @media (max-width: 1024px) {
+      .main-content {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        padding: 15px;
+      }
+      .navbar-links {
+        margin-top: 15px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .bid-action-area {
+        flex-direction: column;
+        width: 100%;
+      }
+      .bid-input,
+      .bid-button {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="Resources/logo.png" alt="Logo">
+    </div>
+    <div class="navbar-links">
+      <a href="index.html" class="active-link">Leilões</a>
+      <a href="#">Anuncie Conosco</a>
+      <a href="populares.html">Populares</a>
+      <a href="#">O que é a BLMG?</a>
+    </div>
+  </div>
+
+  <div class="page-container">
+    <div class="main-content">
+      <div class="image-column">
+        <div class="main-image-wrapper">
+          <img id="mainImage" class="main-image" src="Resources/mustangbonito/o0c_F.jpg" alt="Imagem Principal do Mustang">
+        </div>
+        <div class="thumbnail-gallery">
+          <img class="gallery-thumb active-thumb" src="Resources/mustangbonito/o0c_F.jpg" alt="Mustang Principal" onclick="changeImage(this)">
+          <img class="gallery-thumb" src="Resources/mustangbonito/8dHcd.jpg" alt="Frente do Mustang" onclick="changeImage(this)">
+          <img class="gallery-thumb" src="Resources/mustangbonito/T11nG.jpg" alt="Interior do Mustang" onclick="changeImage(this)">
+          <img class="gallery-thumb" src="Resources/mustangbonito/uG0wc.jpg" alt="Traseira do Mustang" onclick="changeImage(this)">
+          <img class="gallery-thumb" src="Resources/mustangbonito/w-bbL.jpg" alt="Lateral do Mustang" onclick="changeImage(this)">
+          <img class="gallery-thumb" src="Resources/mustangbonito/rGoXdjXo-s5dwKa7D-H.jpg" alt="Roda do Mustang" onclick="changeImage(this)">
+        </div>
+      </div>
+
+      <div class="details-column">
+        <div class="specs-table">
+          <div class="spec-item"><span class="spec-label">Marca</span><span class="spec-value">Ford</span></div>
+          <div class="spec-item"><span class="spec-label">Modelo</span><span class="spec-value">Mustang Shelby GT350R</span></div>
+          <div class="spec-item"><span class="spec-label">Quilometragem</span><span class="spec-value">19.000</span></div>
+          <div class="spec-item"><span class="spec-label">VIN</span><span class="spec-value">WP0AC2A94FS184148</span></div>
+          <div class="spec-item"><span class="spec-label">Motor</span><span class="spec-value">5.2L V8 "Voodoo"</span></div>
+          <div class="spec-item"><span class="spec-label">Tração</span><span class="spec-value">Traseira</span></div>
+          <div class="spec-item"><span class="spec-label">Transmissão</span><span class="spec-value">Manual (6 vel.)</span></div>
+          <div class="spec-item"><span class="spec-label">Carroceria</span><span class="spec-value">Coupe</span></div>
+          <div class="spec-item"><span class="spec-label">Cor Externa</span><span class="spec-value">Branco</span></div>
+          <div class="spec-item"><span class="spec-label">Cor Interna</span><span class="spec-value">Preto com detalhes em vermelho</span></div>
+          <div class="spec-item"><span class="spec-label">Tipo de Vendedor</span><span class="spec-value">Particular</span></div>
+        </div>
+
+        <div class="seller-contact" data-name="Alexdm007" data-phone="(11) 98765-4321" data-email="alex.dm@email-exemplo.com">
+          <div class="seller-info">
+            <span class="seller-label">Vendedor</span>
+            <strong>Alexdm007</strong>
+          </div>
+          <a href="#" class="contact-button-seller">Contato</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="car-info-bottom">
+      <div class="car-title">2018 Ford Mustang Shelby GT350R</div>
+      <div class="car-meta">19.000 km | Único dono | Todas revisões na concessionária</div>
+      <div class="description">
+        Este Shelby GT350R é uma máquina focada para as pistas, equipado com o lendário motor Voodoo 5.2L V8 de virabrequim plano, que gira a mais de 8.000 RPM. Esta unidade está em estado impecável, com baixa quilometragem e acompanha todos os manuais e chave reserva.
+      </div>
+    </div>
+
+    <div class="auction-section">
+      <div class="auction-end-time">
+        <span></span> Fim do leilão em: <strong>20/06/2025 às 19h</strong>
+      </div>
+      <div class="current-bid-area" id="currentBid">
+      </div>
+      <div class="bid-action-area">
+        <input type="text" id="bidInput" class="bid-input" placeholder="Digite seu lance">
+        <button class="bid-button" onclick="submitBid()">Dar Lance</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-overlay" id="sellerModal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Informações de Contato</h2>
+      <p><strong>Nome:</strong> <span id="modal-seller-name"></span></p>
+      <p><strong>Email:</strong> <span id="modal-seller-email"></span></p>
+      <p><strong>Telefone:</strong> <span id="modal-seller-phone"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Script de galeria de imagem
+    const mainImage = document.getElementById('mainImage');
+    const thumbnails = document.querySelectorAll('.gallery-thumb');
+
+    function changeImage(thumb) {
+      mainImage.src = thumb.src;
+      thumbnails.forEach(t => t.classList.remove('active-thumb'));
+      thumb.classList.add('active-thumb');
+    }
+
+    // Script de lance
+    const bidKey = "currentBidMustangGT350R_v1";
+    let currentBid = parseFloat(localStorage.getItem(bidKey)) || 580000;
+
+    function formatCurrency(value) {
+      return value.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
+    }
+
+    function updateBidDisplay() {
+      document.getElementById("currentBid").innerHTML = `
+        <span>Lance atual</span>
+        <strong>${formatCurrency(currentBid)}</strong>
+      `;
+    }
+
+    function submitBid() {
+      const bidInput = document.getElementById("bidInput");
+      const newBidValue = bidInput.value.replace(/\./g, '').replace(',', '.');
+      const newBid = parseFloat(newBidValue);
+
+      if (isNaN(newBid) || newBid <= currentBid) {
+        alert("Digite um valor válido, maior que o lance atual.");
+        return;
+      }
+      currentBid = newBid;
+      localStorage.setItem(bidKey, currentBid);
+      updateBidDisplay();
+      alert("Lance registrado com sucesso!");
+      bidInput.value = "";
+    }
+
+    document.addEventListener('DOMContentLoaded', updateBidDisplay);
+
+    // Script do Modal de Contato
+    const contactButton = document.querySelector('.contact-button-seller');
+    const modalOverlay = document.getElementById('sellerModal');
+    const closeModalButton = document.querySelector('.close-modal');
+
+    contactButton.addEventListener('click', function(event) {
+      event.preventDefault();
+
+      const sellerContactElement = this.closest('.seller-contact');
+      const name = sellerContactElement.dataset.name;
+      const email = sellerContactElement.dataset.email;
+      const phone = sellerContactElement.dataset.phone;
+
+      document.getElementById('modal-seller-name').textContent = name;
+      document.getElementById('modal-seller-email').textContent = email;
+      document.getElementById('modal-seller-phone').textContent = phone;
+
+      modalOverlay.classList.add('modal-active');
+    });
+
+    function closeModal() {
+      modalOverlay.classList.remove('modal-active');
+    }
+
+    closeModalButton.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function(event) {
+      if (event.target === modalOverlay) {
+        closeModal();
+      }
+    });
+  </script>
+
+</body>
+</html>

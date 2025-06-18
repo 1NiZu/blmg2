@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Create Account</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #3547a8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      width: 400px;
+      max-width: 90%;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 24px;
+      color: black;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 90%;
+      padding: 12px;
+      padding-top: 12px;
+      background-color: #3743a5;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 1s ease;
+    }
+
+    button:hover {
+      background-color: #2e378a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo image -->
+  <div class="logo">
+    <img src="Resources/911/logo.png" alt="Logo" width="250">
+  </div>
+
+  <div class="container">
+    <h1>Começe Agora!</h1>
+    <form id="registerForm">
+      <input type="text" id="userID" placeholder="Ex: João Silva" required>
+      <input type="email" id="email" placeholder="Ex: joaosilva@exemplo.com" required>
+      <input type="password" id="password" placeholder="Diferencie maiúsculas e minúsculas" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get form values
+      const userID = document.getElementById('userID').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      // Check if all fields are filled
+      if (!userID || !email || !password) {
+        alert('Todos os campos devem ser preenchidos.');
+        return;
+      }
+
+      // Check if the email is valid
+      if (!email.includes('@')) {
+        alert('Insira um email válido.');
+        return;
+      }
+
+      // Store user data in sessionStorage
+      sessionStorage.setItem('userID', userID);
+      sessionStorage.setItem('email', email);
+      sessionStorage.setItem('password', password);
+
+      // Redirect to dashboard
+      window.location.href = 'home.html'; // Change this if needed
+    });
+  </script>
+
+</body>
+</html>
