@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre a BLMG - Leilões de Carros</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1c1c1c;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      background-color: #3547a8;
+      display: flex;
+      justify-content: space-between; /* Garante o espaçamento entre logo, links e busca */
+      align-items: center;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      width: 175px;
+      display: block; /* Para evitar espaço extra abaixo da imagem se houver */
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 20px;
+      /* Margens automáticas removidas daqui para que 'space-between' do pai posicione os links */
+    }
+
+    .navbar-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .navbar-links a:hover,
+    .navbar-links .active-link {
+      background-color: #252e6d;
+    }
+    
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-container input {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+
+    .search-container button {
+      background-color: #030c53; /* Cor do botão de busca de home.html */
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .search-container button:hover {
+      background-color: #2e378a; /* Cor do hover do botão de busca de home.html */
+    }
+
+    .content-section {
+      padding: 30px;
+      max-width: 900px;
+      margin: 20px auto;
+      background-color: #2c2c2c;
+      border-radius: 8px;
+    }
+
+    .content-section h1 {
+      font-size: 32px;
+      font-weight: bold;
+      color: #3547a8; /* Cor do título principal da seção de conteúdo */
+      margin-bottom: 20px;
+      border-bottom: 2px solid #3547a8;
+      padding-bottom: 10px;
+    }
+
+    .content-section h2 {
+      font-size: 24px;
+      color: #ccc;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    .content-section p {
+      font-size: 16px;
+      color: #eee;
+      margin-bottom: 15px;
+    }
+
+    .content-section ul {
+      list-style-type: disc;
+      margin-left: 20px; /* Mantém a indentação da lista */
+      padding-left: 0; /* Remove padding padrão do ul se houver */
+    }
+
+    .content-section li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      color: #eee;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column; /* Empilha os itens da navbar */
+        align-items: stretch; /* Faz os itens ocuparem a largura total */
+        padding: 10px;
+      }
+
+      .logo {
+        align-self: center; /* Centraliza o logo quando empilhado */
+        margin-bottom: 10px;
+      }
+
+      .navbar-links {
+        flex-direction: column; /* Links em coluna */
+        width: 100%; /* Ocupa toda a largura */
+        align-items: center; /* Centraliza os links em si */
+        margin-top: 0; /* Remove margem do topo se .logo tem margin-bottom */
+        gap: 5px; /* Reduz o gap entre os links */
+      }
+
+      .navbar-links a {
+        display: block; /* Faz cada link ocupar uma linha */
+        width: calc(100% - 30px); /* Largura total menos padding */
+        text-align: center; /* Centraliza o texto dentro de cada link */
+        padding: 12px 15px; /* Ajusta padding para mobile */
+        margin-bottom: 5px; /* Espaço entre os botões de link */
+      }
+      
+      .navbar-links .active-link {
+         width: calc(100% - 30px); /* Garante a mesma largura para o link ativo */
+      }
+
+      .search-container {
+        width: calc(100% - 20px); /* Largura total menos padding da navbar */
+        margin-top: 15px;
+        padding: 0 10px; /* Adiciona padding interno para não colar nas bordas */
+        /* display: flex; /* Já é flex por padrão */
+      }
+
+      .search-container input {
+        flex-grow: 1; /* Input ocupa o espaço restante */
+        min-width: 0; /* Permite que o input encolha corretamente */
+        font-size: 15px; /* Ajusta tamanho da fonte para mobile */
+      }
+
+      .search-container button {
+        padding: 10px 12px; /* Ajusta padding do botão para mobile */
+        font-size: 15px; /* Ajusta tamanho da fonte para mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">
+      <img src="Resources/logo.png" alt="Logo BLMG">
+    </div>
+    <div class="navbar-links">
+      <a href="home.html">Leilões</a>
+      <a href="#">Anuncie Conosco</a>
+      <a href="populares.html">Populares</a>
+      <a href="info.html" class="active-link">O que é a BLMG?</a>
+    </div>
+    <div class="search-container">
+      <input type="text" placeholder="Pesquise por marcas">
+      <button>Buscar</button>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h1>Sobre a BLMG: Paixão por Carros, Excelência em Leilões</h1>
+
+    <p>Bem-vindo à BLMG, a sua plataforma definitiva para compra e venda de veículos extraordinários através de leilões dinâmicos e transparentes. Nascemos da paixão por automóveis e do desejo de conectar entusiastas, colecionadores e negociantes a oportunidades únicas no mercado.</p>
+
+    <h2>Nossa Missão</h2>
+    <p>Nossa missão é revolucionar a experiência de leilões de carros, oferecendo uma plataforma segura, intuitiva e confiável. Buscamos proporcionar transações justas e eficientes, onde cada veículo recebe a atenção que merece e cada cliente, seja comprador ou vendedor, sente-se valorizado e satisfeito.</p>
+
+    <h2>Nossa Visão</h2>
+    <p>Almejamos ser reconhecidos como líderes no segmento de leilões de carros online, destacando-nos pela qualidade da nossa curadoria de veículos, pela inovação tecnológica constante e pelo compromisso inabalável com a integridade e a satisfação do cliente.</p>
+
+    <h2>Nossos Valores</h2>
+    <ul>
+      <li><strong>Transparência:</strong> Processos claros e informações detalhadas sobre cada veículo e leilão.</li>
+      <li><strong>Confiança:</strong> Construímos relações baseadas na honestidade e na segurança das transações.</li>
+      <li><strong>Paixão:</strong> Somos movidos pelo fascínio por carros e pela vontade de compartilhar essa paixão.</li>
+      <li><strong>Inovação:</strong> Buscamos continuamente aprimorar nossa plataforma e serviços.</li>
+      <li><strong>Excelência no Atendimento:</strong> Dedicamo-nos a oferecer suporte ágil e eficaz a todos os nossos usuários.</li>
+    </ul>
+
+    <h2>O Que Fazemos?</h2>
+    <p>Na BLMG, especializamo-nos em:</p>
+    <ul>
+      <li><strong>Leilões Online:</strong> Uma vasta gama de veículos, desde clássicos restaurados a esportivos modernos e raridades.</li>
+      <li><strong>Curadoria Especializada:</strong> Cada veículo listado passa por uma análise para garantir a qualidade e a veracidade das informações.</li>
+      <li><strong>Plataforma Segura:</strong> Tecnologia de ponta para proteger seus dados e garantir lances seguros.</li>
+      <li><strong>Suporte Dedicado:</strong> Nossa equipe está pronta para auxiliar em todas as etapas do processo de leilão.</li>
+    </ul>
+
+    <p>Junte-se à comunidade BLMG e descubra uma nova forma de vivenciar o universo dos carros. Seja para encontrar o veículo dos seus sonhos ou para vender o seu exemplar com a valorização que ele merece, a BLMG é o seu destino.</p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Featured Car</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1c1c1c;
+      color: white;
+    }
+
+    .navbar {
+      background-color: #3547a8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo img {
+      width: 175px;
+    }
+
+    .navbar-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px 15px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .navbar-links a:hover {
+      background-color: #2e378a;
+    }
+
+    .navbar-links .active-link {
+      background-color: #252e6d;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-container input {
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+
+    .search-container button {
+      background-color: #030c53;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .search-container button:hover {
+      background-color: #2e378a;
+    }
+
+    .car-showcase {
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      background-color: #2c2c2c;
+    }
+
+    .car-main {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .main-car-container {
+      position: relative;
+    }
+
+    .main-car-container img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 8px;
+    }
+
+    .main-car-container a {
+      display: block;
+    }
+
+    .car-info {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: #eeeeee;
+      color: #111;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .car-side-galleries {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+
+    .car-gallery-vertical,
+    .car-gallery-vertical-2 {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .car-gallery-vertical img,
+    .car-gallery-vertical-2 img {
+      width: 257px;
+      height: auto;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .car-gallery-vertical img:hover,
+    .car-gallery-vertical-2 img:hover {
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+
+    .car-bottom-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .car-text-block {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .car-text {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .car-subtext {
+      font-size: 14px;
+      color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .car-timer-bid {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .car-timer-bid span {
+      background: #444;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    /* Cards Section */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      padding: 30px;
+    }
+
+    .card {
+      background: #1e1e1e;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #000;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .img-box {
+      position: relative;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffd700;
+      color: #000;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .badge.no-reserve {
+      background: #3b82f6;
+      color: #fff;
+    }
+
+    .info {
+      padding: 1rem;
+    }
+
+    .top-row {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .bid {
+      color: #4ade80;
+    }
+
+    .location {
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    h3 {
+      margin: 0.5rem 0 0.25rem;
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin: 0.25rem 0;
+    }
+
+    @media screen and (max-width: 900px) {
+      .car-main {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .car-side-galleries {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .car-bottom-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="Resources/logo.png" alt="Logo">
+    </div>
+
+    <div class="navbar-links">
+      <a href="home.html">Leilões</a>
+      <a href="#">Anuncie Conosco</a>
+      <a href="#" class="active-link">Populares</a>
+      <a href="info.html">O que é a BLMG?</a>
+    </div>
+    
+
+    <div class="search-container">
+      <input type="text" placeholder="Pesquise por marcas">
+      <button>Buscar</button>
+    </div>
+  </div>
+    
+  <!-- Cards Section -->
+<div class="cards">
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/Cronos/cronosmain.jpg" alt="2016 M4">
+      <!-- <span class="badge">FEATURED</span> -->
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$90.000,00</span>
+      </div>
+      <h3>2025 Fiat Cronos 1.0 Firefly Flex</h3>
+      <p>~15,000 km, Manual, Sedã</p>
+      <p class="location">Brasília, DF</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="img-box">
+      <img src="Resources/Onix/onixmain.jpg" alt="2016 M4">
+      <!-- <span class="badge">FEATURED</span> -->
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Vendido por R$71.900,00</span>
+      </div>
+      <h3>2023 Chevrolet Onix 1.0 Flex LT</h3>
+      <p>~71.334 Km, Manual, Hatchback</p>
+      <p class="location">Porto Alegre, RS</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="img-box">
+      <img src="Resources/Polo/polomain.jpg" alt="2016 M4">
+      <!-- <span class="badge">FEATURED</span> -->
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Vendido por R$103.000,00</span>
+      </div>
+      <h3>2023 Volkswgen Polo 1.0 170 TSI Highline</h3>
+      <p>~35.179 Km, Automático, Hatchback</p>
+      <p class="location">Indaiatuba, SP</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/Jetta/jettamain.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$90.000,00</span>
+      </div>
+      <h3>2018 Volkswagen Jetta 2.0 TSI Highline Tiptronic</h3>
+      <p>~97.000 Km, Automático, Sedã</p>
+      <p class="location">São Paulo, SP</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/Mobi/mobimain.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$43.500,00</span>
+      </div>
+      <h3>2021 Fiat Mobi 1.0 EVO Flex Like</h3>
+      <p>~67.000 km, Manual, Hatchback</p>
+      <p class="location">Goiânia,GO</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/City/citymain.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$105.900,00</span>
+      </div>
+      <h3>2023 Honda City 1.5 i-VTEC Flex EXL CVT</h3>
+      <p>~26.483 Km, Automático, Sedã</p>
+      <p class="location">Araraquara, SP</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/S10/s10main.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$140.000,00</span>
+      </div>
+      <h3>2022 CHEVROLET S10 2.8 16V Turbo LS CD 4X4</h3>
+      <p>~25.496 Km, Manual, Picape</p>
+      <p class="location">Maringá, PR</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/Ecosport/ecosportmain.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$60.000,00</span>
+      </div>
+      <h3>2018 Ford Ecosport 1.5 TI-VCT Flex SE </h3>
+      <p>~97.763 Km, Automático, Utilitário esportivo</p>
+      <p class="location">São Bernardo do Campo, SP</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/Corolla/corollamain.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$115.000,00</span>
+      </div>
+      <h3>2022 Toyota Corolla 2.0 VVT-IE Flex Xei Direct Shift</h3>
+      <p>~85.764 Km, Automático, Sedã</p>
+      <p class="location">Bragança Paulista, SP</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/Palio/paliomain.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$27.000,00</span>
+      </div>
+      <h3>2017 Fiat Palio 1.0 Mpi Attractive 8V Flex</h3>
+      <p>~71.455 Km, Manual, Hatchback</p>
+      <p class="location">Nova Iguaçu, RJ</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/208/208main.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$70.000,00</span>
+      </div>
+      <h3>2020 Peugeot 208 1.6 Griffe 16V Flex</h3>
+      <p>~49.192 Km, Automático, Hatchback</p>
+      <p class="location">São Paulo, SP</p>
+    </div>
+  </div>
+
+  <div onclick="redirect()" class="card">
+    <div class="img-box">
+      <img src="Resources/Civic/civicmain.jpg" alt="2016 M4">
+    </div>
+    <div class="info">
+      <div class="top-row">
+        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+        <span class="bid">Lance R$115.000,00</span>
+      </div>
+      <h3>2021 Honda Civic 2.0 16V Flexone EXL</h3>
+      <p>~56.700 Km, CVT, Sedã</p>
+      <p class="location">Belo Horizonte, MG</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function redirect() {
+    window.location.href = "car-details-page.html";
+  }
+
+  function changeMainImage(src) {
+    document.getElementById("mainImage").src = src;
+  }
+
+  function updateAllCountdowns() {
+    const now = new Date();
+    const timers = document.querySelectorAll(".timer");
+
+    timers.forEach(timer => {
+      const endTime = new Date(timer.getAttribute("data-end"));
+      const diff = endTime - now;
+
+     if (diff <= 0) {
+  timer.textContent = "⏱ Encerrado";
+  timer.style.color = "red"; // <-- this sets the text color to red
+  return;
+}
+
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      timer.textContent = `⏱ ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    });
+  }
+
+  updateAllCountdowns(); // Run once on load
+  setInterval(updateAllCountdowns, 1000); // Update every second
+</script>
+
+</body>
+</html>

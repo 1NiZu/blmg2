@@ -182,7 +182,7 @@
     /* Cards Section */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      grid-template-columns: repeat(4, 1fr); /* Changed to 4 columns */
       gap: 1.5rem;
       padding: 30px;
     }
@@ -273,12 +273,16 @@
         align-items: flex-start;
         gap: 10px;
       }
+
+      /* Adjust card grid for smaller screens */
+      .cards {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <div class="navbar">
     <div class="logo">
       <img src="Resources/logo.png" alt="Logo">
@@ -288,7 +292,7 @@
       <a href="home.html" class="active-link">Leilões</a>
       <a href="#">Anuncie Conosco</a>
       <a href="populares.html">Populares</a>
-      <a href="#">O que é a BLMG?</a>
+      <a href="info.html">O que é a BLMG?</a>
     </div>
 
     <div class="search-container">
@@ -297,11 +301,10 @@
     </div>
   </div>
 
-  <!-- Featured Car Section -->
   <div class="car-showcase">
     <div class="car-main">
-      <div class="main-car-container">
-        <a href="911main.html">
+      <div  onclick="redirect('911.html')" class="main-car-container">
+        <a href="911.html">
           <img id="mainImage" src="Resources/911/911main.jpg" alt="Featured Car">
           <div class="car-info">EM DESTAQUE</div>
         </a>
@@ -334,204 +337,192 @@
   </div>
 
   
-  <!-- Cards Section -->
-<div class="cards">
-  <div onclick="redirect('m4.html')" class="card">
-    <div class="img-box">
-      <img src="Resources/M4/M4main.jpg" alt="2016 M4">
-      <!-- <span class="badge">FEATURED</span> -->
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$770.000,00</span>
+  <div class="cards">
+    <div class="card">
+      <div class="img-box">
+        <img src="Resources/M4/M4main.jpg" alt="2016 M4">
+        </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+          <span class="bid">Vendido R$770.000,00</span>
+        </div>
+        <h3>2016 BMW M4 Coupe Competition Package</h3>
+        <p>~5,000 km, Manual de 6 marchas</p>
+        <p class="location">Brasília, DF</p>
       </div>
-      <h3>2016 BMW M4 Coupe Competition Package</h3>
-      <p>~5,000 km, Manual de 6 marchas</p>
-      <p class="location">Brasília, DF</p>
+    </div>
+
+    <div class="card">
+      
+      <div class="img-box">
+        <img src="Resources/Ram/MjAXE.jpg" alt="2016 M4">
+        </div>
+      <div  onclick="redirect('ram.html')" class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-06-20T22:23:00Z">⏱</span>
+          <span class="bid">Lance: R$850.900,00</span>
+        </div>
+        <h3>2020 Ram 1500 Rebel</h3>
+        <p>Crew Cab, 5.7L V8 Hemi</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="Resources/Aston/astonmain.jpg" alt="2016 M4">
+        </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+          <span class="bid">Vendido R$1.015.000,00</span>
+        </div>
+        <h3>2013 Aston Martin DB9 Coupe</h3>
+        <p>V12, 510 cv, ~23500 km</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="Resources/Charger/chargermain.jpg" alt="2016 M4">
+          <span class="badge">Único no Brasil!</span> 
+      </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+          <span class="bid">Vendido R$3.270.000,00</span>
+        </div>
+        <h3>2023 Dodge Charger SRT Hellcat Widebody Jailbreak</h3>
+        <p>V8 supercharged, Pintura exclusiva, 717 cv</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div  onclick="redirect('maclaren.html')" class="img-box">
+        <img src="Resources/Maclaren/_Xnhz.jpg" alt="2016 M4">
+          <span class="badge">Raridade!</span> 
+      </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-06-30T22:00:00Z">⏱</span>
+          <span class="bid">Lance R$2.800.000,00</span>
+        </div>
+        <h3>2018 McLaren 720s Performance</h3>
+        <p>V8 twin-turbo, 710 hp</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="Resources/Mustang/mustangmain.jpg" alt="2016 M4">
+          </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
+          <span class="bid">Vendido R$450.000,00</span>
+        </div>
+        <h3>2020 Ford Mustang Shelby GT500</h3>
+        <p>V8 Supercharged, 760 cv</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div  onclick="redirect('mustang.html')" class="img-box">
+        <img src="Resources/mustangbonito/o0c_F.jpg" alt="2016 M4">
+          <span class="badge">Coupé!</span> 
+      </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-06-22T22:00:00Z">⏱</span>
+          <span class="bid">Lance R$580.000,00</span>
+        </div>
+        <h3>Ford Mustang Shelby GT500 WideBody Modificado</h3>
+        <p>Original, Motor 428 FE V8</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div  onclick="redirect('supra.html')" class="img-box">
+        <img src="Resources/Supra/0DWSy.jpg" alt="2016 M4">
+          </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-06-28T22:00:00Z">⏱</span>
+          <span class="bid">Lance R$2.599.000,00</span>
+        </div>
+        <h3>Toyota Supra Twin Turbo</h3>
+        <p>Totalmente original, JDM</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div  onclick="redirect('pajero.html')" class="img-box">
+        <img src="Resources/pajero/d3x6g.jpg" alt="2016 M4">
+      </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-07-20T22:00:00Z">⏱</span>
+          <span class="bid">Lance R$109.000,00</span>
+        </div>
+        <h3>2020 Mitsubishi Pajero Full HPE</h3>
+        <p>Diesel, 4x4, Edição Limitada</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div onclick="redirect(amg.html)" class="card">
+      <div onclick="redirect(amg.html)" class="img-box">
+        <img src="Resources/amg/WRaiH.jpg" alt="2016 M4">
+          </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-06-30T22:00:00Z">⏱</span>
+          <span class="bid">Lance R$870.000,00</span>
+        </div>
+        <h3>2022 Mercedes-AMG G63</h3>
+        <p>Interior exclusivo, ~35.000 km</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div onclick="redirect(honda.html)" class="card">
+      <div onclick="redirect(honda.html)" class="img-box">
+        <img src="Resources/honda/izQNi.jpg" alt="2016 M4">
+          </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-06-27T22:00:00Z">⏱</span>
+          <span class="bid">Lance R$270.000,00</span>
+        </div>
+        <h3>2020 Honda Civic Type R</h3>
+        <p>Manual, 306 cv</p>
+        <p class="location">Brasília, DF</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="img-box">
+        <img src="Resources/camaro/Sv2bm.jpg" alt="2016 M4">
+          <span class="badge">Pintura exclusiva!</span>
+      </div>
+      <div class="info">
+        <div class="top-row">
+          <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
+          <span class="bid">Vendido R$570.000,00</span>
+        </div>
+        <h3>2018 Chevrolet Camaro ZL1</h3>
+        <p>Supercharged, 650 cv</p>
+        <p class="location">Brasília, DF</p>
+      </div>
     </div>
   </div>
-
-  <div class="card">
-    <div class="img-box">
-      <img src="Resources/Ram/MjAXE.jpg" alt="2016 M4">
-      <!-- <span class="badge">FEATURED</span> -->
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Vendido por R$407.000,00</span>
-      </div>
-      <h3>2011 Ford Mustang Shelby GT500 Coupe</h3>
-      <p>Manual 6 marchas, V8, Levemente modificado</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="img-box">
-      <img src="Resources/Aston/astonmain.jpg" alt="2016 M4">
-      <!-- <span class="badge">FEATURED</span> -->
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Vendido por R$1.015.000,00</span>
-      </div>
-      <h3>2013 Aston Martin DB9 Coupe</h3>
-      <p>V12, 510 cv, ~23500 km</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div onclick="redirect('charger.html')" class="card">
-    <div class="img-box">
-      <img src="Resources/Charger/chargermain.jpg" alt="2016 M4">
-       <span class="badge">Único no Brasil!</span> 
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$3.270.000,00</span>
-      </div>
-      <h3>2023 Dodge Charger SRT Hellcat Widebody Jailbreak</h3>
-      <p>V8 supercharged, Pintura exclusiva, 717 cv</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <!--                                                    -->
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/Maclaren/_Xnhz.jpg" alt="2016 M4">
-       <span class="badge">Raridade!</span> 
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$4.110.000,00</span>
-      </div>
-      <h3>2008 Lamborghini Gallardo Superleggera</h3>
-      <p>V10 5 litros, 1 de 618</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/Mustang/mustangmain.jpg" alt="2016 M4">
-       <!--<span class="badge">Único no Brasil!</span> -->
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$1.990.000,00</span>
-      </div>
-      <h3>2013 Nissan GT-R Black Edition</h3>
-      <p>AWD, modificado, V6</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/mustangbonito/o0c_F.jpg" alt="2016 M4">
-       <span class="badge">Coupé!</span> 
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$4.870.000,00</span>
-      </div>
-      <h3>2021 Mercedes-AMG GT Stealth Edition</h3>
-      <p>Altamente modificado, pintura exclusiva</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/Supra/0DWSy.jpg" alt="2016 M4">
-       <!--<span class="badge">Único no Brasil!</span> -->
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2024-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$5.599.000,00</span>
-      </div>
-      <h3>2018 Ferrari 812 Superfast</h3>
-      <p>700 mil + em opcionais</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <!--                                                    -->
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/pajero/d3x6g.jpg" alt="2016 M4">
-       <span class="badge">1 de 100!</span> 
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$15.270.000,00</span>
-      </div>
-      <h3>2019 Ford GT Carbon Series</h3>
-      <p>Raridade feita em carbono</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/amg/WRaiH.jpg" alt="2016 M4">
-       <!--<span class="badge">Único no Brasil!</span> -->
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$3.270.000,00</span>
-      </div>
-      <h3>2022 Mercedes-AMG G63</h3>
-      <p>Interior exclusivo, ~35.000 km</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/honda/izQNi.jpg" alt="2016 M4">
-       <!--<span class="badge">Único no Brasil!</span> -->
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$3.270.000,00</span>
-      </div>
-      <h3>1996 Mitsubishi Lancer Evolution IV GSR</h3>
-      <p>Bodykit VARIS, AWD</p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-
-  <div onclick="redirect()" class="card">
-    <div class="img-box">
-      <img src="Resources/camaro/Sv2bm.jpg" alt="2016 M4">
-       <span class="badge">Pintura exclusiva!</span>
-    </div>
-    <div class="info">
-      <div class="top-row">
-        <span class="timer" data-end="2025-05-20T22:00:00Z">⏱</span>
-        <span class="bid">Lance R$3.270.000,00</span>
-      </div>
-      <h3>2017 Chevrolet Corvette Stingray Coupe</h3>
-      <p></p>
-      <p class="location">Brasília, DF</p>
-    </div>
-  </div>
-</div>
 
 <script>
   function redirect(url) {
@@ -551,7 +542,7 @@
       const endTime = new Date(timer.getAttribute("data-end"));
       const diff = endTime - now;
 
-     if (diff <= 0) {
+      if (diff <= 0) {
   timer.textContent = "⏱ Encerrado";
   timer.style.color = "red"; // <-- this sets the text color to red
   return;
